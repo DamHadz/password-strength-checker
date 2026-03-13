@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Strength Checker – Test & Improve Your Password Security</title>
+  <meta name="description" content="Check your password strength instantly. Get real-time security analysis, crack time estimates, and smart suggestions to create stronger, safer passwords." />
+  <meta name="keywords" content="password strength checker, password security, strong password, password tester, check password strength, password generator" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yoursite.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Password Strength Checker – Free Online Tool" />
+  <meta property="og:description" content="Test your password strength instantly. Real-time analysis, crack time, and improvement suggestions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yoursite.com/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Password Strength Checker" />
+  <meta name="twitter:description" content="Test your password strength instantly with real-time analysis." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Password Strength Checker",
+    "description": "Free online tool to check password strength, estimate crack time, and get security improvement suggestions.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+
+  <!-- Google Analytics (replace G-XXXXXXXX with your Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+  </script>
+
+  <!-- Google AdSense (replace ca-pub-XXXXXXXX with your Publisher ID) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="dark">
+
+  <!-- ═══════════════════════════════════════════
+       TOP BANNER AD
+  ═══════════════════════════════════════════ -->
+  <div class="ad-container ad-top">
+    <div class="ad-label">Advertisement</div>
+    <!-- Replace with your actual AdSense ad unit code -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- PLACEHOLDER (remove when AdSense is live) -->
+    <div class="ad-placeholder">Ad Banner 728×90</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo" role="banner">
+        <svg class="logo-icon-svg" width="38" height="44" viewBox="0 0 38 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 9 L19 2 L35 9 L35 27 Q35 38 19 43 Q3 38 3 27 Z" fill="currentColor" opacity="0.07"/>
+          <path d="M3 9 L19 2 L35 9" stroke="#00c8e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 9 L3 27 Q3 38 19 43 Q35 38 35 27 L35 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.3"/>
+          <rect x="11" y="24" width="16" height="12" rx="3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <path d="M14 24 L14 19 Q14 13.5 19 13.5 Q24 13.5 24 19 L24 24" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <circle cx="19" cy="31" r="2.3" fill="#00c8e0"/>
+          <rect x="18" y="32.5" width="2" height="2.8" rx="1" fill="#00c8e0"/>
+        </svg>
+        <div class="logo-text-block">
+          <div class="logo-wordmark">
+            <span class="logo-pass">PASS</span><span class="logo-dot">&#183;</span><span class="logo-guard">GUARD</span>
+          </div>
+          <div class="logo-tagline">Password Strength Checker</div>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span class="toggle-icon" id="toggleIcon">☀️</span>
+        <span class="toggle-label" id="toggleLabel">Light Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Free Security Tool</div>
+      <h1 class="hero-title">Password Strength <span class="accent">Checker</span></h1>
+      <p class="hero-subtitle">Instantly analyze your password security. Get crack time estimates, weakness detection, and AI-grade improvement suggestions.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN TOOL
+  ═══════════════════════════════════════════ -->
+  <main class="main-content">
+    <div class="container">
+      <div class="tool-card">
+
+        <!-- Password Input -->
+        <div class="input-group">
+          <label for="passwordInput" class="input-label">Enter Your Password</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="passwordInput"
+              class="password-input"
+              placeholder="Type or paste your password..."
+              autocomplete="new-password"
+              spellcheck="false"
+            />
+            <button class="icon-btn" id="toggleVisibility" aria-label="Show/hide password">
+              <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <div class="char-count" id="charCount">0 characters</div>
+        </div>
+
+        <!-- Strength Meter -->
+        <div class="strength-section" id="strengthSection" style="display:none">
+          <div class="meter-header">
+            <span class="meter-label">Password Strength</span>
+            <span class="strength-badge" id="strengthBadge">—</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="meterFill"></div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">⏱️</div>
+              <div class="stat-info">
+                <div class="stat-label">Est. Crack Time</div>
+                <div class="stat-value" id="crackTime">—</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-info">
+                <div class="stat-label">Entropy</div>
+                <div class="stat-value" id="entropy">—</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🔣</div>
+              <div class="stat-info">
+                <div class="stat-label">Character Set</div>
+                <div class="stat-value" id="charSet">—</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🛡️</div>
+              <div class="stat-info">
+                <div class="stat-label">Score</div>
+                <div class="stat-value" id="scoreDisplay">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Issues -->
+          <div class="issues-section" id="issuesSection" style="display:none">
+            <h3 class="section-title">⚠️ Issues Detected</h3>
+            <ul class="issues-list" id="issuesList"></ul>
+          </div>
+
+          <!-- Suggestions -->
+          <div class="suggestions-section" id="suggestionsSection" style="display:none">
+            <h3 class="section-title">💡 How to Improve</h3>
+            <ul class="suggestions-list" id="suggestionsList"></ul>
+          </div>
+
+          <!-- Checklist -->
+          <div class="checklist-section">
+            <h3 class="section-title">Security Checklist</h3>
+            <div class="checklist" id="checklist">
+              <div class="check-item" id="check-length"><span class="check-icon">○</span> At least 12 characters</div>
+              <div class="check-item" id="check-upper"><span class="check-icon">○</span> Uppercase letters (A–Z)</div>
+              <div class="check-item" id="check-lower"><span class="check-icon">○</span> Lowercase letters (a–z)</div>
+              <div class="check-item" id="check-number"><span class="check-icon">○</span> Numbers (0–9)</div>
+              <div class="check-item" id="check-special"><span class="check-icon">○</span> Special characters (!@#$...)</div>
+              <div class="check-item" id="check-common"><span class="check-icon">○</span> Not a common password</div>
+              <div class="check-item" id="check-repeat"><span class="check-icon">○</span> No repeated patterns</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generator -->
+        <div class="generator-section">
+          <div class="generator-header">
+            <h3 class="section-title" style="margin:0">🎲 Generate Strong Password</h3>
+          </div>
+          <div class="generator-options">
+            <div class="option-row">
+              <label class="option-label">Length: <span id="lengthVal">16</span></label>
+              <input type="range" id="lengthSlider" min="8" max="64" value="16" class="slider" />
+            </div>
+            <div class="option-checkboxes">
+              <label class="checkbox-label"><input type="checkbox" id="inclUpper" checked /> Uppercase</label>
+              <label class="checkbox-label"><input type="checkbox" id="inclLower" checked /> Lowercase</label>
+              <label class="checkbox-label"><input type="checkbox" id="inclNumbers" checked /> Numbers</label>
+              <label class="checkbox-label"><input type="checkbox" id="inclSymbols" checked /> Symbols</label>
+            </div>
+          </div>
+          <div class="generated-output" id="generatedOutput" style="display:none">
+            <code class="generated-password" id="generatedPassword"></code>
+            <div class="gen-actions">
+              <button class="btn btn-ghost" id="copyBtn">📋 Copy</button>
+              <button class="btn btn-ghost" id="useBtn">→ Test This</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="generateBtn">Generate Password</button>
+        </div>
+
+        <!-- Copy toast -->
+        <div class="toast" id="toast">✅ Copied to clipboard!</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       MID-CONTENT AD
+  ═══════════════════════════════════════════ -->
+  <div class="ad-container ad-mid">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 336×280</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEO CONTENT SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="seo-content">
+    <div class="container">
+
+      <article class="content-card">
+        <h2>What is Password Strength?</h2>
+        <p>Password strength is a measure of how difficult it would be for an attacker to guess or crack a password through brute force, dictionary attacks, or other methods. A strong password combines multiple character types (uppercase, lowercase, numbers, symbols), has sufficient length, and avoids predictable patterns.</p>
+        <p>Password strength is typically measured by two key factors: <strong>entropy</strong> (the randomness or unpredictability of the password) and <strong>resistance to common attack vectors</strong>. A password with 80+ bits of entropy is considered very strong by current cryptographic standards.</p>
+        <div class="strength-table">
+          <table>
+            <thead><tr><th>Strength Level</th><th>Entropy</th><th>Example</th><th>Crack Time</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge weak">Weak</span></td><td>&lt;28 bits</td><td>password1</td><td>Seconds</td></tr>
+              <tr><td><span class="badge medium">Medium</span></td><td>28–50 bits</td><td>Tr0ub4dor</td><td>Hours–Days</td></tr>
+              <tr><td><span class="badge strong">Strong</span></td><td>50–80 bits</td><td>K#9mP2vL!qR</td><td>Years</td></tr>
+              <tr><td><span class="badge vstrong">Very Strong</span></td><td>80+ bits</td><td>K#9mP2v!L@qR7$x</td><td>Centuries</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="content-card">
+        <h2>How Hackers Crack Passwords</h2>
+        <p>Understanding attack methods helps you build better defenses. Here are the most common techniques:</p>
+        <div class="attack-grid">
+          <div class="attack-card">
+            <div class="attack-icon">💥</div>
+            <h3>Brute Force</h3>
+            <p>Systematically tries every possible combination. A modern GPU cluster can test <strong>100 billion passwords per second</strong>. Short passwords fall instantly.</p>
+          </div>
+          <div class="attack-card">
+            <div class="attack-icon">📖</div>
+            <h3>Dictionary Attack</h3>
+            <p>Uses wordlists of common passwords, phrases, and their variations. The RockYou list alone has <strong>14 million passwords</strong>. "Password123" is in every list.</p>
+          </div>
+          <div class="attack-card">
+            <div class="attack-icon">🌈</div>
+            <h3>Rainbow Tables</h3>
+            <p>Pre-computed hash tables allowing instant lookup of password hashes. <strong>Unsalted MD5 hashes</strong> can be cracked in milliseconds using these tables.</p>
+          </div>
+          <div class="attack-card">
+            <div class="attack-icon">🎭</div>
+            <h3>Credential Stuffing</h3>
+            <p>Uses username/password combos from previous breaches. With <strong>billions of records</strong> leaked, password reuse is extremely dangerous.</p>
+          </div>
+          <div class="attack-card">
+            <div class="attack-icon">🎣</div>
+            <h3>Phishing</h3>
+            <p>Tricks users into entering credentials on fake sites. No amount of password strength protects against <strong>willingly entering your password</strong> on a malicious page.</p>
+          </div>
+          <div class="attack-card">
+            <div class="attack-icon">🔑</div>
+            <h3>Keylogging</h3>
+            <p>Malware that captures keystrokes as you type. A <strong>perfect password</strong> is useless if attackers can watch you type it in real time.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- AD between sections -->
+      <div class="ad-container ad-inline">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="ad-placeholder">Ad Banner 728×90</div>
+      </div>
+
+      <article class="content-card">
+        <h2>10 Tips to Create Secure Passwords</h2>
+        <div class="tips-list">
+          <div class="tip-item">
+            <span class="tip-num">01</span>
+            <div class="tip-body">
+              <h3>Use a Passphrase</h3>
+              <p>Combine 4+ random words: <code>correct-horse-battery-staple</code>. Long passphrases are easy to remember but extremely hard to crack — they beat short complex passwords.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">02</span>
+            <div class="tip-body">
+              <h3>Aim for 16+ Characters</h3>
+              <p>Every additional character exponentially increases crack time. A 16-character password takes millions of years to brute force at current computing speeds.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">03</span>
+            <div class="tip-body">
+              <h3>Mix Character Types</h3>
+              <p>Include uppercase, lowercase, numbers, and symbols. This expands your character set from 26 to 95, making brute force attack space <strong>86 trillion times larger</strong>.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">04</span>
+            <div class="tip-body">
+              <h3>Never Reuse Passwords</h3>
+              <p>Each account needs a unique password. One breach shouldn't compromise all your accounts. Use a password manager to handle the complexity.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">05</span>
+            <div class="tip-body">
+              <h3>Use a Password Manager</h3>
+              <p>Tools like Bitwarden, 1Password, or Dashlane generate and store unique passwords for every site. You only need to remember one master password.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">06</span>
+            <div class="tip-body">
+              <h3>Enable Two-Factor Authentication</h3>
+              <p>2FA adds a second verification step. Even if your password is stolen, attackers still need your phone or authenticator app to gain access.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">07</span>
+            <div class="tip-body">
+              <h3>Avoid Personal Info</h3>
+              <p>Names, birthdays, pet names, and addresses are easy to guess through social engineering. Attackers often research targets on social media before attacking.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">08</span>
+            <div class="tip-body">
+              <h3>Skip Predictable Substitutions</h3>
+              <p>Changing "a" to "@" or "o" to "0" (leet speak) is well-known to hackers. Modern dictionary attacks include all common substitution variants.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">09</span>
+            <div class="tip-body">
+              <h3>Check for Breaches</h3>
+              <p>Use services like Have I Been Pwned to see if your email or passwords appeared in known data breaches. Change compromised passwords immediately.</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-num">10</span>
+            <div class="tip-body">
+              <h3>Update Periodically</h3>
+              <p>Change critical account passwords every 6–12 months. Banking, email, and work accounts should be updated more frequently for maximum security.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- FAQ for SEO -->
+      <article class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Is it safe to type my password into this checker?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. All password analysis happens entirely in your browser using JavaScript. Your password is never sent to any server, logged, or stored. You can verify this by checking the browser's network tab — no requests are made when you type.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What makes a password truly uncrackable?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">No password is truly uncrackable forever — computing power grows over time. However, a random 20+ character password with mixed types would take longer than the age of the universe to crack with current technology.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How accurate is the crack time estimate?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Estimates are based on offline brute-force attacks using ~10 billion guesses per second (a GPU cluster). Real-world times vary depending on attack method, hardware, and whether common patterns are used.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       BOTTOM BANNER AD
+  ═══════════════════════════════════════════ -->
+  <div class="ad-container ad-bottom">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 728×90</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> PassGuard. All analysis is client-side only. No data is collected.</p>
+      <p class="footer-links">
+        <a href="#privacy">Privacy Policy</a> ·
+        <a href="#terms">Terms of Use</a> ·
+        <a href="#contact">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

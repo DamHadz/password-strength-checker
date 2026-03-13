@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 100" width="540" height="100">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&family=Plus+Jakarta+Sans:wght@600&display=swap');
+      .pg-pass  { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 52px; letter-spacing: 1.5px; fill: #e8e8f0; }
+      .pg-guard { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 52px; letter-spacing: 1.5px; fill: #00e5ff; }
+      .pg-tag   { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 3px; fill: #5a5a72; }
+    </style>
+  </defs>
+  <!-- Shield icon -->
+  <path d="M14 18 L38 8 L62 18 L62 52 Q62 70 38 78 Q14 70 14 52 Z" fill="#14141e" stroke="#2a2a3a" stroke-width="1.5"/>
+  <path d="M14 18 L38 8 L62 18" fill="none" stroke="#00e5ff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 18 L14 52 Q14 70 38 78 Q62 70 62 52 L62 18" fill="none" stroke="#e8e8f0" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  <rect x="25" y="42" width="26" height="20" rx="5" fill="none" stroke="#e8e8f0" stroke-width="2" opacity="0.85"/>
+  <path d="M30 42 L30 33 Q30 25 38 25 Q46 25 46 33 L46 42" fill="none" stroke="#e8e8f0" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="38" cy="54" r="3.5" fill="#00e5ff"/>
+  <rect x="36.8" y="56" width="2.4" height="4" rx="1.2" fill="#00e5ff"/>
+  <!-- PASS / dot / GUARD — wide spacing, no S-G crowding -->
+  <text class="pg-pass"  x="86"  y="72">PASS</text>
+  <circle cx="296" cy="60" r="4" fill="#00e5ff" opacity="0.65"/>
+  <text class="pg-guard" x="310" y="72">GUARD</text>
+  <!-- Tagline -->
+  <line x1="87" y1="84" x2="530" y2="84" stroke="#2a2a3a" stroke-width="0.5"/>
+  <text class="pg-tag" x="87" y="96">PASSWORD STRENGTH CHECKER</text>
+</svg>
