@@ -304,8 +304,13 @@
                 </div>
               </div>
 
-              <form id="theForm" action="https://formspree.io/craveabite06@gmail.com" method="POST" novalidate autocomplete="on">
+              <form id="theForm" action="https://api.web3forms.com/submit" method="POST" novalidate autocomplete="on">
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                <!-- Web3Forms access key — fetched on page load and stored here -->
+                <input type="hidden" name="access_key" id="w3fKey" value="" />
+                <input type="hidden" name="subject" id="hiddenSubject" value="New PassGuard Contact Message" />
+                <input type="hidden" name="from_name" value="PassGuard Contact Form" />
+                <input type="hidden" name="redirect" value="false" />
 
                 <!-- Name + Email -->
                 <div class="two-col">
@@ -447,6 +452,26 @@
   /* Year */
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  /* Web3Forms — fetch access key for craveabite06@gmail.com on page load */
+  (async () => {
+    try {
+      const r = await fetch('https://api.web3forms.com/access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: 'craveabite06@gmail.com' })
+      });
+      const d = await r.json();
+      if (d.access_key) {
+        document.getElementById('w3fKey').value = d.access_key;
+        sessionStorage.setItem('w3fk', d.access_key);
+      }
+    } catch (_) {
+      // fallback: use cached key if available
+      const cached = sessionStorage.getItem('w3fk');
+      if (cached) document.getElementById('w3fKey').value = cached;
+    }
+  })();
+
   /* Theme */
   const themeToggle = document.getElementById('themeToggle');
   const toggleIcon  = document.getElementById('toggleIcon');
@@ -547,31 +572,54 @@
       return;
     }
 
+    /* Ensure key is loaded */
+    const w3key = document.getElementById('w3fKey').value;
+    if (!w3key) {
+      const b = document.getElementById('errBanner');
+      document.getElementById('errMsg').textContent = 'Service is initialising — please wait a moment and try again.';
+      b.classList.add('on');
+      return;
+    }
+
     /* Loading */
     sendBtn.disabled = true;
     sendBtn.classList.add('busy');
     btnTxt.textContent = 'Sending…';
 
+    // Update hidden subject field with selected topic
+    document.getElementById('hiddenSubject').value = 'PassGuard: ' + (subj || 'Contact Message');
+
     try {
-      const res = await fetch(form.action, {
+      // Web3Forms expects JSON
+      const payload = {
+        access_key: document.getElementById('w3fKey').value,
+        subject:    'PassGuard: ' + subj,
+        from_name:  'PassGuard Contact Form',
+        name:       name,
+        email:      email,
+        topic:      subj,
+        message:    msg,
+        botcheck:   ''
+      };
+
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (data.success) {
         /* Swap to success pane */
         document.getElementById('formWrap').style.display = 'none';
-        const sp = document.getElementById('successPane');
-        document.getElementById('sentTo').textContent = `A confirmation has been sent to ${email}`;
-        sp.classList.add('on');
+        document.getElementById('sentTo').textContent = 'We will reply to ' + email + ' within 1–2 business days.';
+        document.getElementById('successPane').classList.add('on');
         if (typeof gtag !== 'undefined') {
           gtag('event', 'contact_submitted', { event_category: 'engagement', event_label: subj });
         }
       } else {
-        const data = await res.json().catch(() => ({}));
-        const msg2 = (data.errors && data.errors[0]?.message) || 'Submission failed — please try again.';
-        throw new Error(msg2);
+        throw new Error(data.message || 'Submission failed — please try again.');
       }
     } catch(err) {
       sendBtn.disabled = false;
@@ -579,9 +627,9 @@
       btnTxt.textContent = 'Send Message →';
       const b = document.getElementById('errBanner');
       document.getElementById('errMsg').textContent =
-        err.message.includes('fetch')
-          ? 'No internet connection. Please check and try again.'
-          : err.message + '  —  or email craveabite06@gmail.com directly.';
+        (err.message && err.message !== 'Failed to fetch')
+          ? err.message + ' — or email craveabite06@gmail.com directly.'
+          : 'No internet connection — check your connection and try again.';
       b.classList.add('on');
       b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
