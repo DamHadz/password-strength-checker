@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – PassGuard Password Strength Checker</title>
+  <meta name="description" content="Get in touch with the PassGuard team. Report bugs, suggest features, ask questions about password security, or enquire about partnerships." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yoursite.com/contact.html" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .page-hero {
+      padding: 52px 0 32px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 48px;
+    }
+    .page-hero .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 18px;
+      font-family: var(--font-main);
+    }
+    .page-hero .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .page-hero .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero .breadcrumb span { opacity: 0.4; }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--text-2);
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      padding-bottom: 64px;
+      align-items: start;
+    }
+
+    /* ── Contact Form ── */
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-2);
+      font-family: var(--font-mono);
+      margin-bottom: 8px;
+    }
+    .form-label .required { color: var(--accent); margin-left: 2px; }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: var(--bg-2);
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: var(--font-main);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--text-3); }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a72' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-select option { background: var(--card); color: var(--text); }
+
+    .char-counter {
+      font-size: 11px;
+      color: var(--text-3);
+      text-align: right;
+      margin-top: 5px;
+      font-family: var(--font-mono);
+    }
+    .char-counter.warn { color: var(--medium); }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 16px;
+      animation: fadeIn 0.4s ease;
+    }
+    .form-success .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .form-success p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Info Sidebar ── */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    .info-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-2);
+      font-family: var(--font-mono);
+      margin-bottom: 14px;
+    }
+    .info-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .info-item:last-child { margin-bottom: 0; }
+    .info-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .info-item h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .info-item p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .info-item a { color: var(--accent); text-decoration: none; }
+    .info-item a:hover { text-decoration: underline; }
+
+    .response-time {
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .response-time .rt-icon { font-size: 18px; }
+    .response-time p {
+      font-size: 13px;
+      color: var(--text-2);
+      margin: 0;
+    }
+    .response-time strong { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      .contact-form-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- TOP AD -->
+  <div class="ad-container ad-top">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 728×90</div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="PassGuard — go to homepage">
+        <svg class="logo-icon-svg" width="38" height="44" viewBox="0 0 38 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 9 L19 2 L35 9 L35 27 Q35 38 19 43 Q3 38 3 27 Z" fill="currentColor" opacity="0.07"/>
+          <path d="M3 9 L19 2 L35 9" stroke="#00c8e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 9 L3 27 Q3 38 19 43 Q35 38 35 27 L35 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.3"/>
+          <rect x="11" y="24" width="16" height="12" rx="3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <path d="M14 24 L14 19 Q14 13.5 19 13.5 Q24 13.5 24 19 L24 24" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <circle cx="19" cy="31" r="2.3" fill="#00c8e0"/>
+          <rect x="18" y="32.5" width="2" height="2.8" rx="1" fill="#00c8e0"/>
+        </svg>
+        <div class="logo-text-block">
+          <div class="logo-wordmark">
+            <span class="logo-pass">PASS</span><span class="logo-dot">·</span><span class="logo-guard">GUARD</span>
+          </div>
+          <div class="logo-tagline">Password Strength Checker</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span class="toggle-icon" id="toggleIcon">☀️</span>
+        <span class="toggle-label" id="toggleLabel">Light Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>Contact</span>
+      </div>
+      <h1 class="page-title">Get in Touch</h1>
+      <p class="page-subtitle">Have a question, found a bug, or want to suggest a feature? We'd love to hear from you.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT LAYOUT -->
+  <main>
+    <div class="container contact-layout">
+
+      <!-- FORM -->
+      <div class="contact-form-card">
+        <h2 class="form-title">Send a Message</h2>
+
+        <!-- The actual form — connects to Formspree, Netlify Forms, or similar -->
+        <!-- Replace action="https://formspree.io/f/YOUR_ID" with your form endpoint -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <!-- Honeypot anti-spam field (hidden) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="form-group">
+            <label class="form-label" for="fname">Your Name <span class="required">*</span></label>
+            <input class="form-input" type="text" id="fname" name="name" placeholder="e.g. Alex Johnson" required autocomplete="name" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="femail">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="femail" name="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fsubject">Subject <span class="required">*</span></label>
+            <select class="form-select" id="fsubject" name="subject" required>
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="bug">🐛 Bug Report</option>
+              <option value="feature">💡 Feature Suggestion</option>
+              <option value="security">🔐 Security Question</option>
+              <option value="privacy">🛡️ Privacy Inquiry</option>
+              <option value="partnership">🤝 Partnership / Advertising</option>
+              <option value="press">📰 Press / Media</option>
+              <option value="other">💬 Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fmessage">Message <span class="required">*</span></label>
+            <textarea class="form-textarea" id="fmessage" name="message" placeholder="Tell us what's on your mind..." required maxlength="2000" oninput="updateCounter(this)"></textarea>
+            <div class="char-counter" id="charCounter">0 / 2000</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+            Send Message
+          </button>
+        </form>
+
+        <!-- Success message (shown after submission) -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 1–2 business days.</p>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="contact-sidebar">
+
+        <div class="info-card">
+          <div class="info-card-title">What we can help with</div>
+          <div class="info-item">
+            <span class="info-icon">🐛</span>
+            <div>
+              <h4>Bug Reports</h4>
+              <p>Something not working? Tell us the browser, OS, and what you expected to happen.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">💡</span>
+            <div>
+              <h4>Feature Requests</h4>
+              <p>Ideas to make PassGuard more useful — we read every suggestion.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🔐</span>
+            <div>
+              <h4>Security Research</h4>
+              <p>Found a vulnerability? Please disclose it responsibly via this form.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🤝</span>
+            <div>
+              <h4>Partnerships</h4>
+              <p>Advertising, sponsorships, or link partnerships — include your website URL.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">Response Time</div>
+          <div class="response-time">
+            <span class="rt-icon">⏱️</span>
+            <p>We typically respond within <strong>1–2 business days</strong>. High-volume periods may take slightly longer.</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">Other Pages</div>
+          <div class="info-item">
+            <span class="info-icon">🛡️</span>
+            <div>
+              <h4><a href="privacy.html">Privacy Policy</a></h4>
+              <p>How we handle (or rather, don't handle) your data.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📋</span>
+            <div>
+              <h4><a href="terms.html">Terms of Use</a></h4>
+              <p>The rules for using PassGuard.</p>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- BOTTOM AD -->
+  <div class="ad-container ad-bottom">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 728×90</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> PassGuard. All analysis is client-side only. No data is collected.</p>
+      <p class="footer-links">
+        <a href="privacy.html">Privacy Policy</a> ·
+        <a href="terms.html">Terms of Use</a> ·
+        <a href="contact.html" style="color: var(--accent);">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const toggleIcon  = document.getElementById('toggleIcon');
+    const toggleLabel = document.getElementById('toggleLabel');
+    let currentTheme  = localStorage.getItem('theme') || 'dark';
+    applyTheme(currentTheme);
+    function applyTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      toggleIcon.textContent  = theme === 'light' ? '🌙' : '☀️';
+      toggleLabel.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+      currentTheme = theme;
+      localStorage.setItem('theme', theme);
+    }
+    themeToggle.addEventListener('click', () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+
+    // Character counter
+    function updateCounter(el) {
+      const counter = document.getElementById('charCounter');
+      const len = el.value.length;
+      counter.textContent = len + ' / 2000';
+      counter.classList.toggle('warn', len > 1800);
+    }
+
+    // Form submission — handles Formspree AJAX
+    // If you use Netlify Forms, remove this script block and add
+    // data-netlify="true" netlify-honeypot="_gotcha" to the <form> tag
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic validation
+      const name    = document.getElementById('fname').value.trim();
+      const email   = document.getElementById('femail').value.trim();
+      const subject = document.getElementById('fsubject').value;
+      const message = document.getElementById('fmessage').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          formSuccess.style.display = 'block';
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'contact_form_submitted', { event_category: 'engagement', event_label: subject });
+          }
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    });
+  </script>
+</body>
+</html>
