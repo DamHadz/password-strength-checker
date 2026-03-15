@@ -231,28 +231,6 @@
     .response-box p { font-size: 13px; color: var(--text-2); margin: 0; line-height: 1.6; }
     .response-box strong { color: var(--accent); }
 
-    /* ── Backend setup note ── */
-    .setup-note {
-      background: rgba(255,165,2,0.07);
-      border: 1px solid rgba(255,165,2,0.2);
-      border-left: 3px solid #ffa502;
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 12px;
-      color: var(--text-2);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .setup-note strong { color: #ffa502; }
-    .setup-note code {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      background: var(--bg-3);
-      padding: 1px 5px;
-      border-radius: 4px;
-      color: var(--accent);
-    }
-
     @media (max-width: 680px) {
       .contact-layout { grid-template-columns: 1fr; }
       .contact-form-card { padding: 20px 16px; }
@@ -264,9 +242,8 @@
   <!-- TOP AD -->
   <div class="ad-container ad-top">
     <div class="ad-label">Advertisement</div>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1514402783581748" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="ad-placeholder">Ad Banner 728×90</div>
   </div>
 
   <!-- HEADER -->
@@ -316,29 +293,6 @@
       <!-- FORM -->
       <div class="contact-form-card">
         <h2 class="form-title">Send a Message</h2>
-
-        <!-- ── DEVELOPER NOTE (remove after setting up backend) ──
-             Option A — Formspree (free, no account needed for basic use):
-               1. Go to https://formspree.io → New Form → copy your form ID
-               2. Replace YOUR_FORM_ID below with the real ID  e.g. xrgvkpqz
-               3. Remove the .setup-note div below
-
-             Option B — Netlify Forms (free, works if hosted on Netlify):
-               1. Add  data-netlify="true"  to the <form> tag
-               2. Remove the fetch() logic in the script — Netlify handles it
-               3. Remove the .setup-note div below
-
-             Option C — EmailJS (free tier, no server needed):
-               1. https://www.emailjs.com → create template → get public key
-               2. Replace the fetch block with EmailJS.sendForm()
-        ── -->
-
-        <div class="setup-note" id="setupNote">
-          ⚠️ <strong>Developer:</strong> Replace <code>YOUR_FORM_ID</code> in the form action with your real
-          <a href="https://formspree.io" target="_blank" rel="noopener" style="color:var(--accent);">Formspree</a> ID,
-          then remove this notice. Until then the form sends via your email client as a fallback.
-        </div>
-
         <!-- Inline banner (replaces browser alert) -->
         <div class="form-banner banner-error" id="bannerError" role="alert">
           <span class="banner-icon">⚠️</span>
@@ -355,7 +309,7 @@
           </div>
         </div>
 
-        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form id="contactForm" action="https://formspree.io/craveabite06@gmail.com" method="POST" novalidate>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div class="form-group">
@@ -466,9 +420,8 @@
   <!-- BOTTOM AD -->
   <div class="ad-container ad-bottom">
     <div class="ad-label">Advertisement</div>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1514402783581748" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="ad-placeholder">Ad Banner 728×90</div>
   </div>
 
   <!-- FOOTER -->
@@ -536,7 +489,7 @@
     // ── Form submission ────────────────────────────────
     const form      = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
-    const FORM_ID   = form.action.includes('YOUR_FORM_ID'); // true = not configured yet
+    const FORM_ID   = false; // Formspree endpoint configured
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -567,7 +520,7 @@
           'Name: ' + name + '\nEmail: ' + email +
           '\nSubject: ' + subject + '\n\nMessage:\n' + message
         );
-        window.location.href = 'mailto:hello@yoursite.com?subject=' +
+        window.location.href = 'mailto:craveabite06@gmail.com?subject=' +
           encodeURIComponent('[PassGuard] ' + subject) + '&body=' + body;
         return;
       }
@@ -586,7 +539,7 @@
         if (res.ok) {
           form.style.display = 'none';
           showBanner('bannerSuccess');
-          document.getElementById('setupNote') && (document.getElementById('setupNote').style.display = 'none');
+          // form configured — no setup note to hide
           if (typeof gtag !== 'undefined') {
             gtag('event', 'contact_form_submitted', { event_category: 'engagement', event_label: subject });
           }
@@ -598,7 +551,7 @@
         submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
         document.getElementById('bannerErrorMsg').textContent =
-          'Sending failed. Please try again or email us directly at hello@yoursite.com';
+          'Sending failed. Please try again or email us directly at craveabite06@gmail.com';
         showBanner('bannerError');
       }
     });
