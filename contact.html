@@ -299,8 +299,8 @@
               <div class="s-banner err" id="errBanner" role="alert" aria-live="polite">
                 <span class="s-ico">⚠️</span>
                 <div class="s-txt">
-                  <strong>Please fix the errors below</strong>
-                  <em id="errMsg">Check the highlighted fields and try again.</em>
+                  <strong>Almost there!</strong>
+                  <em id="errMsg">Just a few things need attention below.</em>
                 </div>
               </div>
 
@@ -317,12 +317,12 @@
                   <div class="fg">
                     <label class="fl" for="fname">Full Name <span class="r">*</span></label>
                     <input class="fi" type="text" id="fname" name="name" placeholder="Your name" autocomplete="name" />
-                    <div class="fe" id="e-name">Please enter your name.</div>
+                    <div class="fe" id="e-name">What should we call you?</div>
                   </div>
                   <div class="fg">
                     <label class="fl" for="femail">Email <span class="r">*</span></label>
                     <input class="fi" type="email" id="femail" name="email" placeholder="you@email.com" autocomplete="email" />
-                    <div class="fe" id="e-email">Enter a valid email.</div>
+                    <div class="fe" id="e-email">Double-check your email address.</div>
                   </div>
                 </div>
 
@@ -339,7 +339,7 @@
                     <option value="General Question">💬  General Question</option>
                     <option value="Other">📌  Other</option>
                   </select>
-                  <div class="fe" id="e-subject">Please select a subject.</div>
+                  <div class="fe" id="e-subject">Pick a topic so we can help faster.</div>
                 </div>
 
                 <!-- Message -->
@@ -349,7 +349,7 @@
                   <div class="ctr">
                     <span class="cc" id="cc">0 / 3000</span>
                   </div>
-                  <div class="fe" id="e-msg">Please write a message (min 10 characters).</div>
+                  <div class="fe" id="e-msg">Add a little more detail so we can help you.</div>
                 </div>
 
                 <!-- Submit -->
@@ -555,36 +555,31 @@
 
     /* Per-field validation */
     let errs = 0;
-    if (!name)              { setE('fname',    'e-name',    'Please enter your name.');           errs++; }
+    if (!name)              { setE('fname',    'e-name',    'What should we call you?');           errs++; }
     else                    { markOk('fname'); }
-    if (!emailRx.test(email)){ setE('femail',  'e-email',  'Enter a valid email address.');      errs++; }
+    if (!emailRx.test(email)){ setE('femail',  'e-email',  'Double-check your email address.');      errs++; }
     else                    { markOk('femail'); }
-    if (!subj)              { setE('fsubject', 'e-subject', 'Please select a subject.');          errs++; }
-    if (msg.length < 10)    { setE('fmsg',     'e-msg',    'Message must be at least 10 characters.'); errs++; }
+    if (!subj)              { setE('fsubject', 'e-subject', 'Pick a topic so we can help faster.');          errs++; }
+    if (msg.length < 10)    { setE('fmsg',     'e-msg',    'Add a little more detail so we can help you.'); errs++; }
     else                    { markOk('fmsg'); }
 
     if (errs > 0) {
       const b = document.getElementById('errBanner');
       document.getElementById('errMsg').textContent =
-        errs === 1 ? 'Please fix the highlighted field.' : `Please fix all ${errs} highlighted fields.`;
+        errs === 1 ? 'Just one thing needs attention below.' : `Just a few things need attention below.`;
       b.classList.add('on');
       b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       return;
     }
 
-    /* Ensure key is loaded */
-    const w3key = document.getElementById('w3fKey').value;
-    if (!w3key) {
-      const b = document.getElementById('errBanner');
-      document.getElementById('errMsg').textContent = 'Service is initialising — please wait a moment and try again.';
-      b.classList.add('on');
-      return;
-    }
-
-    /* Loading */
+    /* Loading — if key hasn't arrived yet, wait up to 3s for it */
     sendBtn.disabled = true;
     sendBtn.classList.add('busy');
     btnTxt.textContent = 'Sending…';
+
+    if (!document.getElementById('w3fKey').value) {
+      await new Promise(res => setTimeout(res, 3000));
+    }
 
     // Update hidden subject field with selected topic
     document.getElementById('hiddenSubject').value = 'PassGuard: ' + (subj || 'Contact Message');
@@ -628,8 +623,8 @@
       const b = document.getElementById('errBanner');
       document.getElementById('errMsg').textContent =
         (err.message && err.message !== 'Failed to fetch')
-          ? err.message + ' — or email craveabite06@gmail.com directly.'
-          : 'No internet connection — check your connection and try again.';
+          ? 'Something didn\'t go through — please try again, or email us at craveabite06@gmail.com'
+          : 'Looks like you\'re offline — check your connection and try again.';
       b.classList.add('on');
       b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
