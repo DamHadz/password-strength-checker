@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact – PassGuard Password Strength Checker</title>
-  <meta name="description" content="Get in touch with the PassGuard team. Report bugs, suggest features, or ask questions about password security." />
+  <title>Contact Us – PassGuard</title>
+  <meta name="description" content="Get in touch with the PassGuard team. Report bugs, suggest features, ask about security, or just say hello." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://yoursite.com/contact.html" />
 
@@ -12,8 +12,7 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXX');
+    gtag('js', new Date()); gtag('config', 'G-XXXXXXXX');
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
 
@@ -24,216 +23,217 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    .page-hero {
-      padding: 52px 0 32px;
-      border-bottom: 1px solid var(--card-border);
-      margin-bottom: 48px;
+    /* PAGE */
+    .contact-page { padding: 56px 0 80px; }
+
+    .page-header { text-align: center; margin-bottom: 52px; }
+    .page-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent-dim); border: 1px solid var(--accent);
+      color: var(--accent); font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 18px;
     }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-3);
-      margin-bottom: 18px;
-    }
-    .breadcrumb a { color: var(--accent); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb .sep { opacity: 0.4; }
     .page-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      margin-bottom: 12px;
+      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; letter-spacing: -1px; color: var(--text);
+      margin-bottom: 12px; line-height: 1.15;
     }
-    .page-subtitle {
-      font-size: 15px;
-      color: var(--text-2);
-      max-width: 500px;
-      line-height: 1.7;
+    .page-title .hi { color: var(--accent); }
+    .page-desc { font-size: 15px; color: var(--text-2); max-width: 460px; margin: 0 auto; line-height: 1.7; }
+
+    /* GRID */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 24px; align-items: start;
     }
 
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 28px;
-      padding-bottom: 64px;
-      align-items: start;
+    /* FORM CARD */
+    .form-card {
+      background: var(--card); border: 1px solid var(--card-border);
+      border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
     }
+    .form-card-inner { padding: 32px; }
 
-    /* ── Form Card ── */
-    .contact-form-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
-    }
-    .form-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .form-subtitle {
-      font-size: 13px;
-      color: var(--text-3);
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-    .form-subtitle a { color: var(--accent); text-decoration: none; }
-    .form-subtitle a:hover { text-decoration: underline; }
+    .fc-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .fc-sub   { font-size: 13px; color: var(--text-3); margin-bottom: 28px; }
+    .fc-sub span { color: var(--accent); }
 
-    .form-group { margin-bottom: 18px; }
-    .form-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text-2);
-      font-family: var(--font-mono);
-      margin-bottom: 7px;
+    /* Status banners */
+    .s-banner {
+      display: none; border-radius: 10px; padding: 14px 18px;
+      margin-bottom: 22px; gap: 12px; align-items: flex-start;
+      font-size: 14px; line-height: 1.55;
+      animation: bdown .25s ease;
     }
-    .form-label .req { color: var(--accent); margin-left: 2px; }
+    .s-banner.on { display: flex; }
+    .s-banner.err { background: var(--weak-bg); border: 1px solid rgba(255,71,87,.3); }
+    .s-banner.ok  { background: var(--strong-bg); border: 1px solid rgba(46,213,115,.3); }
+    .s-ico { font-size: 20px; flex-shrink: 0; }
+    .s-txt strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 2px; color: var(--text); }
+    .s-txt em { color: var(--text-2); font-style: normal; }
+    @keyframes bdown { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
 
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      background: var(--bg-2);
-      border: 1.5px solid var(--card-border);
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-family: var(--font-main);
-      font-size: 15px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
+    /* Form rows and groups */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fg { margin-bottom: 18px; }
+    .fl {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-2); margin-bottom: 8px;
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-dim);
-    }
-    /* Error state */
-    .form-input.error, .form-select.error, .form-textarea.error {
-      border-color: var(--weak);
-      box-shadow: 0 0 0 3px rgba(255,71,87,0.12);
-    }
-    .field-error {
-      display: none;
-      font-size: 12px;
-      color: var(--weak);
-      margin-top: 5px;
-      font-family: var(--font-main);
-    }
-    .field-error.show { display: block; }
+    .fl .r { color: var(--accent); }
 
-    .form-select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a72' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 38px;
+    .fi, .fs, .ft {
+      width: 100%; background: var(--bg-2);
+      border: 1.5px solid var(--card-border); border-radius: 10px;
+      padding: 12px 16px; font-family: var(--font-main);
+      font-size: 14.5px; color: var(--text); outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      -webkit-appearance: none; appearance: none;
     }
-    .form-select option { background: var(--card); color: var(--text); }
+    .fi::placeholder, .ft::placeholder { color: var(--text-3); }
+    .fi:focus, .fs:focus, .ft:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+    .fi.bad, .fs.bad, .ft.bad {
+      border-color: var(--weak); box-shadow: 0 0 0 3px rgba(255,71,87,.1);
+    }
+    .fi.good, .ft.good { border-color: var(--strong); }
 
-    .form-textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
-    .char-counter {
-      font-size: 11px;
-      color: var(--text-3);
-      text-align: right;
-      margin-top: 5px;
-      font-family: var(--font-mono);
+    .fs {
+      cursor: pointer; padding-right: 42px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%235a5a72' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
     }
-    .char-counter.warn { color: var(--medium); }
+    .fs option { background: var(--card); color: var(--text); }
 
-    /* ── Inline error/success banners ── */
-    .form-banner {
-      display: none;
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 18px;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .form-banner.show { display: flex; }
-    .form-banner.banner-error {
-      background: var(--weak-bg);
-      border: 1px solid rgba(255,71,87,0.3);
-      color: var(--text);
-    }
-    .form-banner.banner-success {
-      background: var(--strong-bg);
-      border: 1px solid rgba(46,213,115,0.3);
-      color: var(--text);
-    }
-    .banner-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-    .banner-text strong { display: block; margin-bottom: 2px; }
+    .ft { resize: vertical; min-height: 148px; line-height: 1.65; }
 
-    .btn-submit {
-      width: 100%;
-      margin-top: 6px;
-      position: relative;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .btn-submit:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .fe { display: none; font-size: 12px; color: var(--weak); margin-top: 5px; padding-left: 2px; }
+    .fe.on { display: block; }
 
-    /* ── Sidebar ── */
-    .contact-sidebar { display: flex; flex-direction: column; gap: 16px; }
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 20px 22px;
-    }
-    .info-card-title {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-3);
-      font-family: var(--font-mono);
-      margin-bottom: 14px;
-    }
-    .info-item {
-      display: flex;
-      gap: 11px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-    }
-    .info-item:last-child { margin-bottom: 0; }
-    .info-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
-    .info-item h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .info-item p  { font-size: 12px; color: var(--text-2); line-height: 1.55; }
-    .info-item a  { color: var(--accent); text-decoration: none; }
-    .info-item a:hover { text-decoration: underline; }
+    .ctr { display: flex; justify-content: flex-end; margin-top: 5px; }
+    .cc { font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+    .cc.warn { color: var(--medium); }
 
-    .response-box {
-      background: var(--accent-dim);
-      border: 1px solid rgba(0,229,255,0.18);
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+    /* Submit button */
+    .btn-send {
+      width: 100%; padding: 14px; font-size: 15px;
+      font-family: var(--font-display); font-weight: 700; letter-spacing: .3px;
+      background: var(--accent); color: #000; border: none;
+      border-radius: 10px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: opacity .2s, transform .15s; margin-top: 8px;
     }
-    .response-box p { font-size: 13px; color: var(--text-2); margin: 0; line-height: 1.6; }
-    .response-box strong { color: var(--accent); }
+    .btn-send:hover:not(:disabled) { opacity: .88; transform: translateY(-1px); }
+    .btn-send:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    .spin {
+      display: none; width: 17px; height: 17px;
+      border: 2.5px solid rgba(0,0,0,.2); border-top-color: #000;
+      border-radius: 50%; animation: rot .7s linear infinite;
+    }
+    .btn-send.busy .spin { display: block; }
+    @keyframes rot { to { transform: rotate(360deg); } }
 
-    @media (max-width: 680px) {
-      .contact-layout { grid-template-columns: 1fr; }
-      .contact-form-card { padding: 20px 16px; }
+    .pnote {
+      text-align: center; font-size: 12px; color: var(--text-3);
+      margin-top: 12px;
+    }
+    .pnote a { color: var(--text-3); text-decoration: underline; }
+    .pnote a:hover { color: var(--accent); }
+
+    /* Success overlay */
+    .success-pane {
+      display: none; padding: 56px 32px;
+      text-align: center; animation: bdown .35s ease;
+    }
+    .success-pane.on { display: block; }
+    .s-circle {
+      width: 76px; height: 76px; background: var(--strong-bg);
+      border: 1px solid rgba(46,213,115,.35); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 34px; margin: 0 auto 20px;
+    }
+    .success-pane h3 {
+      font-family: var(--font-display); font-size: 1.45rem;
+      font-weight: 700; color: var(--text); margin-bottom: 10px;
+    }
+    .success-pane p { font-size: 14px; color: var(--text-2); line-height: 1.75; max-width: 320px; margin: 0 auto 24px; }
+    .success-pane .detail { font-size: 13px; color: var(--text-3); margin-bottom: 24px !important; }
+    .btn-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-3); border: 1px solid var(--card-border);
+      border-radius: 8px; padding: 10px 22px; font-size: 13px;
+      font-weight: 600; color: var(--text); text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-home:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .sc {
+      background: var(--card); border: 1px solid var(--card-border);
+      border-radius: var(--radius); padding: 22px 24px;
+    }
+    .sc-title {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2.5px; color: var(--text-3); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sc-title::after { content:''; flex:1; height:1px; background: var(--card-border); }
+
+    /* Topic chips */
+    .chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .chip {
+      background: var(--bg-2); border: 1.5px solid var(--card-border);
+      border-radius: 9px; padding: 10px 11px; cursor: pointer;
+      transition: border-color .15s, background .15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chip:hover  { border-color: var(--accent); background: var(--accent-dim); }
+    .chip.active { border-color: var(--accent); background: var(--accent-dim); }
+    .chip i  { font-size: 15px; flex-shrink: 0; font-style: normal; }
+    .chip span { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+    /* Response time */
+    .rt {
+      display: flex; align-items: flex-start; gap: 11px;
+      background: var(--accent-dim); border: 1px solid rgba(0,229,255,.18);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .rt-dot {
+      width: 9px; height: 9px; background: var(--strong);
+      border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+      box-shadow: 0 0 6px var(--strong);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .rt p { font-size: 13px; color: var(--text-2); line-height: 1.6; margin: 0; }
+    .rt p strong { color: var(--text); }
+
+    /* Info rows */
+    .ir {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 12px 0; border-bottom: 1px solid var(--card-border);
+    }
+    .ir:first-child { padding-top: 0; }
+    .ir:last-child  { border-bottom: none; padding-bottom: 0; }
+    .ir-icon {
+      width: 34px; height: 34px; background: var(--bg-3);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 15px; flex-shrink: 0;
+    }
+    .ir h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .ir p  { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+    .ir a  { color: var(--accent); text-decoration: none; }
+    .ir a:hover { text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .form-card-inner { padding: 22px 18px; }
     }
   </style>
 </head>
@@ -242,14 +242,15 @@
   <!-- TOP AD -->
   <div class="ad-container ad-top">
     <div class="ad-label">Advertisement</div>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1514402783581748" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 728×90</div>
   </div>
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="PassGuard — go to homepage">
+      <a href="index.html" class="logo" aria-label="PassGuard home">
         <svg class="logo-icon-svg" width="38" height="44" viewBox="0 0 38 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3 9 L19 2 L35 9 L35 27 Q35 38 19 43 Q3 38 3 27 Z" fill="currentColor" opacity="0.07"/>
           <path d="M3 9 L19 2 L35 9" stroke="#00c8e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -266,162 +267,168 @@
           <div class="logo-tagline">Password Strength Checker</div>
         </div>
       </a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span class="toggle-icon" id="toggleIcon">☀️</span>
         <span class="toggle-label" id="toggleLabel">Light Mode</span>
       </button>
     </div>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="sep">›</span>
-        <span>Contact</span>
-      </div>
-      <h1 class="page-title">Get in Touch</h1>
-      <p class="page-subtitle">Have a question, found a bug, or want to suggest a feature? Fill in the form and we'll get back to you.</p>
-    </div>
-  </div>
-
   <!-- MAIN -->
-  <main>
-    <div class="container contact-layout">
+  <main class="contact-page">
+    <div class="container">
 
-      <!-- FORM -->
-      <div class="contact-form-card">
-        <h2 class="form-title">Send a Message</h2>
-        <!-- Inline banner (replaces browser alert) -->
-        <div class="form-banner banner-error" id="bannerError" role="alert">
-          <span class="banner-icon">⚠️</span>
-          <div class="banner-text">
-            <strong>Please fix the following:</strong>
-            <span id="bannerErrorMsg">All fields are required.</span>
-          </div>
-        </div>
-        <div class="form-banner banner-success" id="bannerSuccess" role="status">
-          <span class="banner-icon">✅</span>
-          <div class="banner-text">
-            <strong>Message sent!</strong>
-            Thanks for reaching out. We'll get back to you within 1–2 business days.
-          </div>
-        </div>
-
-        <form id="contactForm" action="https://formspree.io/craveabite06@gmail.com" method="POST" novalidate>
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <div class="form-group">
-            <label class="form-label" for="fname">Your Name <span class="req">*</span></label>
-            <input class="form-input" type="text" id="fname" name="name" placeholder="e.g. Alex Johnson" autocomplete="name" />
-            <div class="field-error" id="err-name">Please enter your name.</div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="femail">Email Address <span class="req">*</span></label>
-            <input class="form-input" type="email" id="femail" name="email" placeholder="you@example.com" autocomplete="email" />
-            <div class="field-error" id="err-email">Please enter a valid email address.</div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="fsubject">Subject <span class="req">*</span></label>
-            <select class="form-select" id="fsubject" name="subject">
-              <option value="" disabled selected>Select a topic...</option>
-              <option value="Bug Report">🐛 Bug Report</option>
-              <option value="Feature Suggestion">💡 Feature Suggestion</option>
-              <option value="Security Question">🔐 Security Question</option>
-              <option value="Privacy Inquiry">🛡️ Privacy Inquiry</option>
-              <option value="Partnership / Advertising">🤝 Partnership / Advertising</option>
-              <option value="Press / Media">📰 Press / Media</option>
-              <option value="Other">💬 Other</option>
-            </select>
-            <div class="field-error" id="err-subject">Please select a subject.</div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="fmessage">Message <span class="req">*</span></label>
-            <textarea class="form-textarea" id="fmessage" name="message" placeholder="Tell us what's on your mind..." maxlength="2000" oninput="updateCounter(this)"></textarea>
-            <div class="char-counter" id="charCounter">0 / 2000</div>
-            <div class="field-error" id="err-message">Please write a message.</div>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
-            Send Message
-          </button>
-        </form>
+      <!-- HEADER -->
+      <div class="page-header">
+        <div class="page-tag">✉️ Contact Us</div>
+        <h1 class="page-title">We'd love to <span class="hi">hear from you</span></h1>
+        <p class="page-desc">Have a question, found a bug, or want to say something? Drop us a message — we read and reply to every one.</p>
       </div>
 
-      <!-- SIDEBAR -->
-      <aside class="contact-sidebar">
+      <!-- MAIN GRID -->
+      <div class="contact-grid">
 
-        <div class="info-card">
-          <div class="info-card-title">What we help with</div>
-          <div class="info-item">
-            <span class="info-icon">🐛</span>
-            <div>
-              <h4>Bug Reports</h4>
-              <p>Something broken? Tell us your browser, OS, and what happened.</p>
+        <!-- ── FORM ── -->
+        <div class="form-card">
+          <div id="formWrap">
+            <div class="form-card-inner">
+              <h2 class="fc-title">Send a Message</h2>
+              <p class="fc-sub">Fields marked <span>*</span> are required.</p>
+
+              <!-- Error banner -->
+              <div class="s-banner err" id="errBanner" role="alert" aria-live="polite">
+                <span class="s-ico">⚠️</span>
+                <div class="s-txt">
+                  <strong>Please fix the errors below</strong>
+                  <em id="errMsg">Check the highlighted fields and try again.</em>
+                </div>
+              </div>
+
+              <form id="theForm" action="https://formspree.io/craveabite06@gmail.com" method="POST" novalidate autocomplete="on">
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+                <!-- Name + Email -->
+                <div class="two-col">
+                  <div class="fg">
+                    <label class="fl" for="fname">Full Name <span class="r">*</span></label>
+                    <input class="fi" type="text" id="fname" name="name" placeholder="Your name" autocomplete="name" />
+                    <div class="fe" id="e-name">Please enter your name.</div>
+                  </div>
+                  <div class="fg">
+                    <label class="fl" for="femail">Email <span class="r">*</span></label>
+                    <input class="fi" type="email" id="femail" name="email" placeholder="you@email.com" autocomplete="email" />
+                    <div class="fe" id="e-email">Enter a valid email.</div>
+                  </div>
+                </div>
+
+                <!-- Subject -->
+                <div class="fg">
+                  <label class="fl" for="fsubject">Subject <span class="r">*</span></label>
+                  <select class="fs" id="fsubject" name="subject">
+                    <option value="" disabled selected>Select a topic…</option>
+                    <option value="Bug Report">🐛  Bug Report</option>
+                    <option value="Feature Request">💡  Feature Request</option>
+                    <option value="Security Issue">🔐  Security Issue</option>
+                    <option value="Privacy Question">🛡️  Privacy Question</option>
+                    <option value="Partnership / Advertising">🤝  Partnership / Advertising</option>
+                    <option value="General Question">💬  General Question</option>
+                    <option value="Other">📌  Other</option>
+                  </select>
+                  <div class="fe" id="e-subject">Please select a subject.</div>
+                </div>
+
+                <!-- Message -->
+                <div class="fg">
+                  <label class="fl" for="fmsg">Message <span class="r">*</span></label>
+                  <textarea class="ft" id="fmsg" name="message" placeholder="Tell us what's on your mind…" maxlength="3000" rows="6" oninput="onCount(this)"></textarea>
+                  <div class="ctr">
+                    <span class="cc" id="cc">0 / 3000</span>
+                  </div>
+                  <div class="fe" id="e-msg">Please write a message (min 10 characters).</div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn-send" id="sendBtn">
+                  <div class="spin"></div>
+                  <span id="btnTxt">Send Message →</span>
+                </button>
+                <p class="pnote">🔒 Your data is never shared. <a href="privacy.html">Privacy Policy</a></p>
+              </form>
             </div>
           </div>
-          <div class="info-item">
-            <span class="info-icon">💡</span>
-            <div>
-              <h4>Feature Requests</h4>
-              <p>Ideas to make PassGuard better — we read every one.</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">🔐</span>
-            <div>
-              <h4>Security Research</h4>
-              <p>Found a vulnerability? Please disclose it responsibly here.</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">🤝</span>
-            <div>
-              <h4>Partnerships</h4>
-              <p>Advertising, sponsorships, or link partnerships.</p>
-            </div>
+
+          <!-- Success pane (swaps in after send) -->
+          <div class="success-pane" id="successPane">
+            <div class="s-circle">✅</div>
+            <h3>Message sent!</h3>
+            <p>Thanks for reaching out. We'll reply to your email within 1–2 business days.</p>
+            <p class="detail" id="sentTo"></p>
+            <a href="index.html" class="btn-home">← Back to Password Checker</a>
           </div>
         </div>
 
-        <div class="info-card">
-          <div class="info-card-title">Response Time</div>
-          <div class="response-box">
-            <span style="font-size:17px;flex-shrink:0;margin-top:2px">⏱️</span>
-            <p>We typically reply within <strong>1–2 business days</strong>. High-volume periods may take slightly longer.</p>
-          </div>
-        </div>
+        <!-- ── SIDEBAR ── -->
+        <aside class="sidebar">
 
-        <div class="info-card">
-          <div class="info-card-title">Other Pages</div>
-          <div class="info-item">
-            <span class="info-icon">🛡️</span>
-            <div>
-              <h4><a href="privacy.html">Privacy Policy</a></h4>
-              <p>How we handle (or don't handle) your data.</p>
+          <!-- Quick topic chips -->
+          <div class="sc">
+            <div class="sc-title">Quick Select Topic</div>
+            <div class="chip-grid">
+              <div class="chip" data-v="Bug Report"               onclick="pickTopic(this)"><i>🐛</i><span>Bug Report</span></div>
+              <div class="chip" data-v="Feature Request"          onclick="pickTopic(this)"><i>💡</i><span>Feature Request</span></div>
+              <div class="chip" data-v="Security Issue"           onclick="pickTopic(this)"><i>🔐</i><span>Security</span></div>
+              <div class="chip" data-v="Partnership / Advertising" onclick="pickTopic(this)"><i>🤝</i><span>Partnership</span></div>
+              <div class="chip" data-v="Privacy Question"         onclick="pickTopic(this)"><i>🛡️</i><span>Privacy</span></div>
+              <div class="chip" data-v="General Question"         onclick="pickTopic(this)"><i>💬</i><span>General</span></div>
             </div>
           </div>
-          <div class="info-item">
-            <span class="info-icon">📋</span>
-            <div>
-              <h4><a href="terms.html">Terms of Use</a></h4>
-              <p>The rules for using PassGuard.</p>
+
+          <!-- Response time -->
+          <div class="sc">
+            <div class="sc-title">Response Time</div>
+            <div class="rt">
+              <div class="rt-dot"></div>
+              <p>We typically reply within <strong>1–2 business days</strong>. Usually much sooner.</p>
             </div>
           </div>
-        </div>
 
-      </aside>
-    </div>
+          <!-- Links -->
+          <div class="sc">
+            <div class="sc-title">Useful Links</div>
+            <div class="ir">
+              <div class="ir-icon">🔐</div>
+              <div>
+                <h4><a href="index.html">Password Checker</a></h4>
+                <p>Go back and test your password strength.</p>
+              </div>
+            </div>
+            <div class="ir">
+              <div class="ir-icon">🛡️</div>
+              <div>
+                <h4><a href="privacy.html">Privacy Policy</a></h4>
+                <p>We don't collect or store passwords. Ever.</p>
+              </div>
+            </div>
+            <div class="ir">
+              <div class="ir-icon">📋</div>
+              <div>
+                <h4><a href="terms.html">Terms of Use</a></h4>
+                <p>The rules for using PassGuard.</p>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div><!-- /contact-grid -->
+    </div><!-- /container -->
   </main>
 
   <!-- BOTTOM AD -->
   <div class="ad-container ad-bottom">
     <div class="ad-label">Advertisement</div>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1514402783581748" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-placeholder">Ad Banner 728×90</div>
   </div>
 
   <!-- FOOTER -->
@@ -431,130 +438,154 @@
       <p class="footer-links">
         <a href="privacy.html">Privacy Policy</a> ·
         <a href="terms.html">Terms of Use</a> ·
-        <a href="contact.html" style="color: var(--accent);">Contact</a>
+        <a href="contact.html" style="color:var(--accent)">Contact</a>
       </p>
     </div>
   </footer>
 
   <script>
-    // ── Utilities ──────────────────────────────────────
-    document.getElementById('year').textContent = new Date().getFullYear();
+  /* Year */
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    function updateCounter(el) {
-      const c = document.getElementById('charCounter');
-      c.textContent = el.value.length + ' / 2000';
-      c.classList.toggle('warn', el.value.length > 1800);
+  /* Theme */
+  const themeToggle = document.getElementById('themeToggle');
+  const toggleIcon  = document.getElementById('toggleIcon');
+  const toggleLabel = document.getElementById('toggleLabel');
+  let theme = localStorage.getItem('theme') || 'dark';
+  applyTheme(theme);
+  function applyTheme(t) {
+    document.body.setAttribute('data-theme', t);
+    toggleIcon.textContent  = t === 'light' ? '🌙' : '☀️';
+    toggleLabel.textContent = t === 'light' ? 'Dark Mode' : 'Light Mode';
+    theme = t; localStorage.setItem('theme', t);
+  }
+  themeToggle.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+
+  /* Char counter */
+  function onCount(el) {
+    const n = el.value.length;
+    const c = document.getElementById('cc');
+    c.textContent = n + ' / 3000';
+    c.classList.toggle('warn', n > 2700);
+  }
+
+  /* Topic chip click → sets select */
+  function pickTopic(chip) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const sel = document.getElementById('fsubject');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === chip.dataset.v) { sel.selectedIndex = i; break; }
+    }
+    clearE('fsubject', 'e-subject');
+    if (window.innerWidth <= 720) {
+      document.getElementById('fname').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  /* Keep chips in sync when select is changed manually */
+  document.getElementById('fsubject').addEventListener('change', function() {
+    document.querySelectorAll('.chip').forEach(c =>
+      c.classList.toggle('active', c.dataset.v === this.value));
+  });
+
+  /* Validation helpers */
+  function setE(id, eid, msg) {
+    const el = document.getElementById(id);
+    const em = document.getElementById(eid);
+    el.classList.add('bad'); el.classList.remove('good');
+    if (msg) em.textContent = msg;
+    em.classList.add('on');
+  }
+  function clearE(id, eid) {
+    document.getElementById(id).classList.remove('bad');
+    document.getElementById(eid).classList.remove('on');
+  }
+  function markOk(id) {
+    const el = document.getElementById(id);
+    el.classList.remove('bad'); el.classList.add('good');
+  }
+
+  /* Live clear on input */
+  [['fname','e-name'],['femail','e-email'],['fsubject','e-subject'],['fmsg','e-msg']].forEach(([id,eid]) => {
+    document.getElementById(id).addEventListener('input', () => {
+      clearE(id, eid);
+      document.getElementById('errBanner').classList.remove('on');
+    });
+  });
+
+  /* Submit */
+  const form    = document.getElementById('theForm');
+  const sendBtn = document.getElementById('sendBtn');
+  const btnTxt  = document.getElementById('btnTxt');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name  = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const subj  = document.getElementById('fsubject').value;
+    const msg   = document.getElementById('fmsg').value.trim();
+    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    /* Per-field validation */
+    let errs = 0;
+    if (!name)              { setE('fname',    'e-name',    'Please enter your name.');           errs++; }
+    else                    { markOk('fname'); }
+    if (!emailRx.test(email)){ setE('femail',  'e-email',  'Enter a valid email address.');      errs++; }
+    else                    { markOk('femail'); }
+    if (!subj)              { setE('fsubject', 'e-subject', 'Please select a subject.');          errs++; }
+    if (msg.length < 10)    { setE('fmsg',     'e-msg',    'Message must be at least 10 characters.'); errs++; }
+    else                    { markOk('fmsg'); }
+
+    if (errs > 0) {
+      const b = document.getElementById('errBanner');
+      document.getElementById('errMsg').textContent =
+        errs === 1 ? 'Please fix the highlighted field.' : `Please fix all ${errs} highlighted fields.`;
+      b.classList.add('on');
+      b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
     }
 
-    // ── Theme toggle ───────────────────────────────────
-    const themeToggle = document.getElementById('themeToggle');
-    const toggleIcon  = document.getElementById('toggleIcon');
-    const toggleLabel = document.getElementById('toggleLabel');
-    let currentTheme  = localStorage.getItem('theme') || 'dark';
-    applyTheme(currentTheme);
-    function applyTheme(t) {
-      document.body.setAttribute('data-theme', t);
-      toggleIcon.textContent  = t === 'light' ? '🌙' : '☀️';
-      toggleLabel.textContent = t === 'light' ? 'Dark Mode' : 'Light Mode';
-      currentTheme = t;
-      localStorage.setItem('theme', t);
-    }
-    themeToggle.addEventListener('click', () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+    /* Loading */
+    sendBtn.disabled = true;
+    sendBtn.classList.add('busy');
+    btnTxt.textContent = 'Sending…';
 
-    // ── Form validation helpers ────────────────────────
-    function setFieldError(inputId, errId, show) {
-      const input = document.getElementById(inputId);
-      const err   = document.getElementById(errId);
-      input.classList.toggle('error', show);
-      err.classList.toggle('show', show);
-    }
-
-    function clearAllErrors() {
-      [['fname','err-name'],['femail','err-email'],['fsubject','err-subject'],['fmessage','err-message']]
-        .forEach(([i,e]) => setFieldError(i, e, false));
-      hideBanner('bannerError');
-    }
-
-    function showBanner(id) { document.getElementById(id).classList.add('show'); }
-    function hideBanner(id) { document.getElementById(id).classList.remove('show'); }
-
-    // Clear error on input
-    ['fname','femail','fsubject','fmessage'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => {
-        setFieldError(id, 'err-' + id.replace('f',''), false);
-        hideBanner('bannerError');
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
-    });
 
-    // ── Form submission ────────────────────────────────
-    const form      = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const FORM_ID   = false; // Formspree endpoint configured
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      clearAllErrors();
-
-      const name    = document.getElementById('fname').value.trim();
-      const email   = document.getElementById('femail').value.trim();
-      const subject = document.getElementById('fsubject').value;
-      const message = document.getElementById('fmessage').value.trim();
-
-      // Field-level validation
-      let hasError = false;
-      if (!name)    { setFieldError('fname',    'err-name',    true); hasError = true; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                      setFieldError('femail',   'err-email',   true); hasError = true; }
-      if (!subject) { setFieldError('fsubject', 'err-subject', true); hasError = true; }
-      if (!message) { setFieldError('fmessage', 'err-message', true); hasError = true; }
-
-      if (hasError) {
-        document.getElementById('bannerErrorMsg').textContent = 'Please fill in all required fields correctly.';
-        showBanner('bannerError');
-        return;
-      }
-
-      // ── If Formspree ID not yet configured → mailto fallback ──
-      if (FORM_ID) {
-        const body = encodeURIComponent(
-          'Name: ' + name + '\nEmail: ' + email +
-          '\nSubject: ' + subject + '\n\nMessage:\n' + message
-        );
-        window.location.href = 'mailto:craveabite06@gmail.com?subject=' +
-          encodeURIComponent('[PassGuard] ' + subject) + '&body=' + body;
-        return;
-      }
-
-      // ── Formspree AJAX submit ──
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          form.style.display = 'none';
-          showBanner('bannerSuccess');
-          // form configured — no setup note to hide
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'contact_form_submitted', { event_category: 'engagement', event_label: subject });
-          }
-        } else {
-          const data = await res.json().catch(() => ({}));
-          throw new Error(data.error || 'Server error');
+      if (res.ok) {
+        /* Swap to success pane */
+        document.getElementById('formWrap').style.display = 'none';
+        const sp = document.getElementById('successPane');
+        document.getElementById('sentTo').textContent = `A confirmation has been sent to ${email}`;
+        sp.classList.add('on');
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'contact_submitted', { event_category: 'engagement', event_label: subj });
         }
-      } catch (err) {
-        submitBtn.textContent = 'Send Message';
-        submitBtn.disabled = false;
-        document.getElementById('bannerErrorMsg').textContent =
-          'Sending failed. Please try again or email us directly at craveabite06@gmail.com';
-        showBanner('bannerError');
+      } else {
+        const data = await res.json().catch(() => ({}));
+        const msg2 = (data.errors && data.errors[0]?.message) || 'Submission failed — please try again.';
+        throw new Error(msg2);
       }
-    });
+    } catch(err) {
+      sendBtn.disabled = false;
+      sendBtn.classList.remove('busy');
+      btnTxt.textContent = 'Send Message →';
+      const b = document.getElementById('errBanner');
+      document.getElementById('errMsg').textContent =
+        err.message.includes('fetch')
+          ? 'No internet connection. Please check and try again.'
+          : err.message + '  —  or email craveabite06@gmail.com directly.';
+      b.classList.add('on');
+      b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
   </script>
 </body>
 </html>
